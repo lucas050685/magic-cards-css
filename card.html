@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="default.css" />
+        <link rel="stylesheet" href="card.css" />
+    </head>
+    <body>
+        <div class="container">
+
+            <!--Inicio do componente-->
+            <div class="magic-card-container animated">
+                <div class="card-shadow"></div>
+
+                <div class="magic-card" style="background-image: url(card.jpg);">
+                    <div class="reflex"></div>
+                </div>
+
+                <div class="magic-card-back" style="background-image: url(back.jpg);">
+                    <div class="reflex"></div>
+                </div> 
+            </div>
+            <!--Fim do componente-->
+
+            <!--Inicio do componente-->
+            <div class="magic-card-container fliped">
+                <div class="card-shadow"></div>
+
+                <div class="magic-card" style="background-image: url(card.jpg);">
+                    <div class="reflex"></div>
+                </div>
+
+                <div class="magic-card-back" style="background-image: url(back.jpg);">
+                    <div class="reflex"></div>
+                </div> 
+            </div>
+            <!--Fim do componente-->
+
+            <!--Inicio do componente-->
+            <div class="magic-card-container turning">
+                <div class="card-shadow"></div>
+
+                <div class="magic-card" style="background-image: url(card-2.jpg);">
+                    <div class="reflex"></div>
+                </div>
+
+                <div class="magic-card-back" style="background-image: url(back.jpg);">
+                    <div class="reflex"></div>
+                </div> 
+            </div>
+            <!--Fim do componente-->
+
+            <!--Inicio do componente-->
+            <div class="magic-card-container flip">
+                <div class="card-shadow"></div>
+
+                <div class="magic-card" style="background-image: url(card.jpg);">
+                    <div class="reflex"></div>
+                </div>
+
+                <div class="magic-card-back" style="background-image: url(back.jpg);">
+                    <div class="reflex"></div>
+                </div> 
+            </div>
+            <!--Fim do componente-->
+
+            <!--Inicio do componente-->
+            <div class="magic-card-container flip-over animated" onClick="flipMe(this);">
+                <div class="card-shadow"></div>
+
+                <div class="magic-card" style="background-image: url(card-3.png);">
+                    <div class="reflex"></div>
+                </div>
+
+                <div class="magic-card-back" style="background-image: url(back.jpg);">
+                    <div class="reflex"></div>
+                </div> 
+            </div>
+            <!--Fim do componente-->
+
+            <!--Inicio do componente-->
+            <div class="magic-card-container fliped" onClick="flipMe(this);">
+                <div class="card-shadow"></div>
+
+                <div class="magic-card" style="background-image: url(card-1.jpg);">
+                    <div class="reflex"></div>
+                </div>
+
+                <div class="magic-card-back" style="background-image: url(back.jpg);">
+                    <div class="reflex"></div>
+                </div> 
+            </div>
+            <!--Fim do componente-->
+
+        </div>
+
+        <script>
+
+            /**
+            * toggle a flip class
+            */
+            function flipMe(o, callback) {
+                let arr = o.className.split(" ");
+                let newFlipClass = 'flip';
+                let removeFlipClass = 'flip-over';
+                let animated = false;
+
+                if(arr.indexOf(newFlipClass) != -1){
+                    newFlipClass = 'flip-over';
+                    removeFlipClass = 'flip';
+                }
+
+                arr = arr.filter((el, index)=>{
+                    if(el == 'animated'){
+                        animated = true;
+                        return false;
+                    }
+
+                    if(newFlipClass == 'flip' && el == 'fliped') return false;
+
+                    if(el == removeFlipClass) return false;
+                    return true;
+                });
+
+                arr.push(newFlipClass);
+
+                var newCard = o.cloneNode(true);
+                newCard.className = arr.join(' ');
+                o.parentNode.replaceChild(newCard, o);
+                if(animated){
+                    setTimeout(()=>{
+                        newCard.className += ' animated ';
+                    }, 1000);
+                }
+
+                if(typeof(callback) == 'function'){
+                    callback(o);
+                }
+            }
+
+        </script>
+    </body>
+</html>
