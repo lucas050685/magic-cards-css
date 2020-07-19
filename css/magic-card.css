@@ -61,7 +61,7 @@
     transform: rotateX(7deg) rotateY(-2deg) translateY(-5px);
 }
 
-.magic-card-container .reflex{
+.magic-card-container .glow{
     position: absolute;
     top: -50%;
     left: -50%;
@@ -72,7 +72,7 @@
     opacity: .3;
 }
 
-.magic-card-container.animated:hover .magic-card .reflex, .magic-card-container.animated:hover .magic-card-back .reflex{
+.magic-card-container.animated:hover .magic-card .glow, .magic-card-container.animated:hover .magic-card-back .glow{
     top: -10%;
     left: -10%;
     opacity: .7;
@@ -83,8 +83,8 @@
     transform-origin: 50% 50%;
 }
 
-.magic-card-container.turning .magic-card .reflex, .magic-card-container.turning .magic-card-back .reflex{
-    animation: turning-front-reflex 2s infinite linear;
+.magic-card-container.turning .magic-card .glow, .magic-card-container.turning .magic-card-back .glow{
+    animation: turning-front-glow 2s infinite linear;
 }
 
 .magic-card-container.turning .magic-card-back{
@@ -183,7 +183,7 @@
     }
 }
 
-@keyframes turning-front-reflex{
+@keyframes turning-front-glow{
     0%{
         top: -50%;
         left: -50%;
